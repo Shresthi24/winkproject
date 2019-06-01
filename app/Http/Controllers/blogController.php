@@ -89,42 +89,8 @@ public function load_data(Request $request)
                     ->get();
          
 
-        if(!$posts->isEmpty())
-        {
-            foreach($posts as $post)
-            {
-                $url = url('blogpage/'. $post->id);
-                $image =($post->featured_image);
-                $title =($post->title);
-                $date=($post ->publish_date); 
-                $ex=($post ->excerpt);                   
-                $output .= '<div class= "row" >
-                <div class="class="col-md-10 col-md-offset-1 ">
-                <div class="w3-display-container w3-text-red imagedist" >
+        return view('oldblogpage',['client'=>$posts]);
 
-  <a href="'.$url.'" >   <img src="'.$image.'" id="imagepost">  
-  
-    
-    <div class="w3-display-left w3-container"><p> <h3> '.$title.'</h3>
-      
-      <h4> '.$ex.'</h4>
-
-
-    </p> </div>
-    <div class="w3-display-bottomleft w3-container"><p><h4> Published on </h4>
-      <h5> '.$date.'
-      </h5></p> </div>
-    </a>
-  </div>
-  </div>
-  </div>';
-
-            }
-              
-          
-        //dd($post);
 }
-echo $output;
-        }
 
 }
